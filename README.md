@@ -1,27 +1,20 @@
 # QuizApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
+A simple MEAN stack-based Quiz App. Definitions made to run the app on localhost.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. Also, to ensure app works right, you have to start the API server by going to the 'api' folder and running 'node app.js' from within. Also, ensure that database connection string is accordingly updated in the config files.
 
-## Code scaffolding
+## Features
+- Login(Users need to be added fron the backend, using some application like POSTMAN, or through direct HTTP request to the API server). Route guards placed on all routes except LeaderBoard.
+- Timed quiz, answer options are disabled on time out. Countdown displayed at top of page
+- Questions also need to be added through HTTP request to appropriate route of the API server
+- Leaderboard page displaying unsorted list of users and their marks
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Project Updates
+- Sign Up
+- Elaborate Admin side
+- Sorting and filtering in the Leaderboard
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### In case of queries or bugs, contact the developer
