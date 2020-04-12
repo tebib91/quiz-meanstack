@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 
 import { environment } from "../../environments/environment";
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 const apiUrl = environment.apiUrl;
 
@@ -13,20 +14,27 @@ const apiUrl = environment.apiUrl;
 })
 export class QuestionService {
   private questions: QuestionData[] = [];
-  private questionsUpdated = new Subject<{ questions: QuestionData[]}>();
+  private questionsUpdated = new Subject<{ questions: QuestionData[] }>();
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router) { }
 
   getData() {
     this.http.get<{ questions: QuestionData[] }>(apiUrl + '/question')
-    .subscribe((questions) => {
-      this.questions = questions.questions;
-      this.questionsUpdated.next({ questions: this.questions });
-    });
+      .subscribe((questions) => {
+        this.questions = questions.questions;
+        this.questionsUpdated.next({ questions: this.questions });
+      });
   }
 
   getQuestionsUpdateListener() {
     return this.questionsUpdated.asObservable();
+  }
+  sendQuestion(data) {
+    this.http.post(apiUrl + "/question", data)
+      .subscribe(response => {
+        console.log(response);
+
+      });
   }
 
   sendMarks(marks: number) {
@@ -36,12 +44,10 @@ export class QuestionService {
       marks: marks
     };
     this.http.post(apiUrl + "/question/mark", data)
-    .subscribe(response => {
+      .subscribe((response: any) => {
         console.log(response);
-        alert('Your Submission has been made! Thank You.');
-        setTimeout(() => {
-            this.authService.logout();
-        }, 2000);
-    });
-}
+        alert(`Your score is ${response.marks}`)
+        this.router.navigate(['/leaderboard'])
+      });
+  }
 }

@@ -1,15 +1,15 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NgForm } from "@angular/forms";
-import { AuthService } from '../services/auth.service';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class RegisterComponent implements OnInit {
   isLoading = false;
   private authStatusSub: Subscription
 
@@ -33,14 +33,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.authService.createUser(form.value.email, form.value.password);
   }
-  onLogin(form: NgForm) {
-    if (form.invalid) {
-      console.log('Error');
-      return;
-    }
-    this.isLoading = true;
-    this.authService.login(form.value.email, form.value.password);
-  }
+
 
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();

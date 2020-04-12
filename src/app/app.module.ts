@@ -1,15 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { 
-  MatInputModule, 
-  MatButtonModule, 
-  MatProgressSpinnerModule, 
+import {
+  MatInputModule,
+  MatButtonModule,
+  MatProgressSpinnerModule,
   MatRadioModule,
-  MatSelectModule, 
-  MatCardModule
+  MatSelectModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatIconModule
 } from "@angular/material";
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -23,6 +25,8 @@ import { HeaderComponent } from './header/header.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { HomeComponent } from './home/home.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { QuestionComponent } from './question/question.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -31,23 +35,28 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
     HeaderComponent,
     QuizComponent,
     HomeComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    QuestionComponent,
+    RegisterComponent
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     AppRoutingModule,
-    FormsModule, 
-    HttpClientModule, 
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     MatInputModule,
+    MatIconModule,
     MatButtonModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatRadioModule,
-    MatSelectModule, 
-    MatCardModule, 
+    MatSelectModule,
+    MatCardModule,
     RouterModule,
-    MatToolbarModule, 
-    CountdownModule, 
+    MatToolbarModule,
+    CountdownModule,
+    MatFormFieldModule,
     BrowserAnimationsModule
   ],
   providers: [],
